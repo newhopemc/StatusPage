@@ -1,0 +1,125 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans&display=swap);
+body {
+	font-family: 'Open Sans', sans-serif!important
+}
+
+.btn,
+.btn-flat,
+.btn-large,
+.btn-small {
+	border-radius: 7px!important
+}
+
+.btn-floating {
+	border-radius: 50%!important
+}
+
+.card .card-content {
+	border-radius: 0 0 7px 7px!important
+}
+
+.card,
+.card-panel {
+	border-radius: 7px!important
+}
+
+.card .card-image,
+.card .card-image img {
+	border-radius: 7px 7px 0 0!important
+}
+
+.card.horizontal .card-image img {
+	border-radius: 7px 0 0 7px!important
+}
+
+.card .card-action {
+	border-radius: 0 0 7px 7px!important
+}
+
+.collection {
+	border-radius: 7px!important;
+	border: none!important;
+	padding: 0 .75rem!important;
+	margin: 0 -.75rem!important
+}
+
+.collection-header,
+.collection-item {
+	border: none!important;
+	border-radius: 7px!important
+}
+
+.collection-item {
+	margin: 1rem 0 .5rem 0!important;
+	padding: 24px!important;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2)
+}
+
+.collapsible {
+	border-radius: 7px!important;
+	border: none!important
+}
+
+.collapsible-header,
+.collapsible-item {
+	border: none!important;
+	border-radius: 7px!important
+}
+
+.collapsible-item {
+	margin: 1rem 1rem .5rem 1rem!important;
+	padding: 24px!important;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2)
+}
+
+.collapsible-body {
+	border-bottom: 0!important
+}
+
+.sidenav li,
+.sidenav li a {
+	border-radius: 0 24px 24px 0!important
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+	background-color: transparent!important
+}
+
+.tabs .indicator {
+	border-radius: 7px 7px 0 0!important;
+	margin: 0 1rem!important
+}
+
+.modal {
+	border-radius: 7px!important
+}
+
+.toast {
+	background-color: #fff!important;
+	border-radius: 7px!important;
+	background-color: #fff!important;
+	color: rgba(0, 0, 0, .87)!important;
+	margin: 10px;
+	width: calc(100% - 20px)!important
+}
+
+.pagination li {
+	border-radius: 7px!important
+}
+
+span.badge {
+	border-radius: 7px!important
+}
+
+.material-tooltip {
+	border-radius: 7px!important;
+	background-color: #fff!important;
+	color: rgba(0, 0, 0, .87)!important
+}
+
+.dropdown-content {
+	border-radius: 7px!important
+}

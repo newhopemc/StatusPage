@@ -1,0 +1,25 @@
+.collapsible li {
+    border-radius: 7px !important;
+    margin-bottom: 12px !important;    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    padding: 6px 0 ;
+}
+
+.collapsible {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+.title {
+    font-family: 'Gilroy';
+    font-size: 6vw;
+    text-align: center;
+    color:white;
+    -webkit-text-shadow: 0 0 2px rgba(0,0,0,1);
+    text-shadow: 0 0 2px rgba(0,0,0,1)    
+}
+
+@font-face {
+    font-family: Gilroy;
+    src: url("../fonts/Radomir Tinkov - Gilroy-ExtraBold.otf") format("opentype");
+}
