@@ -58,40 +58,34 @@ fetch("https://api.uptimerobot.com/v2/getMonitors", {
 })
 
 function getServerStatus(api, server) {
-
-    // Create a request variable and assign a new XMLHttpRequest object to it.
-    var request = new XMLHttpRequest()
-
-    // Open a new connection, using the GET request on the URL endpoint
-    request.open('GET', api+server, true)
-
-    request.onload = function (resp) {
-        const result = JSON.parse(resp)
-        document.getElementById('srvs').innerHTML += `
+    fetch(api+server, {}).then(function(resp){
+        resp.json().then(function(result){
+            document.getElementById('srvs').innerHTML += `
             <li class="collection-item hoverable">
                 <div class="row valign-wrapper" style="margin-bottom: 0">
                     <div class="col s9">
                         ${server.charAt(0).toUpperCase() + server.slice(1)}
                     </div>
                     <div class="col s3">
-                        ${result['online'] ? getStatus(2) : getStatus(9)}
+                        ${result['online'] ? getStatus(2, " ("+result['players']['online']+"/"+result['players']['max']+")") : getStatus(9)}
                     </div>
                 </div>
             </li>
             `
-    }
-
-    // Send request
-    request.send()
+        })
+    })
 }
 
-function getStatus(status) {
+function getStatus(status, toBeAppended) {
+    if(toBeAppended == undefined){
+        toBeAppended = ""
+    }
     if (status == 0) {
         return `<span class="grey-text text-darken-2 valign-wrapper"><i class="material-icons">pause</i> Megállítva</span>`
     } else if (status == 1) {
         return `<span class="orange-text text-darken-1 valign-wrapper"><i class="material-icons">pause</i> Még nem volt felmérve</span>`
     } else if (status == 2) {
-        return `<span class="green-text valign-wrapper"><i class="material-icons">done</i> Online</span>`
+        return `<span class="green-text valign-wrapper"><i class="material-icons">done</i> Online${toBeAppended}</span>`
     } else if (status == 8) {
         return `<span class="red-text valign-wrapper"><i class="material-icons">hourglass_empty</i> Leállítás...</span>`
     }
