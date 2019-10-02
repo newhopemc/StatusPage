@@ -52,8 +52,11 @@ fetch("https://api.uptimerobot.com/v2/getMonitors", {
         })
 
         const api = "https://newhope.hu/status.php?server="
+        getServerStatus(api, "bungeecord")
+        getServerStatus(api, "lobby")
         getServerStatus(api, "survival")
         getServerStatus(api, "skyblock")
+        getServerStatus(api, "speedbuilders")
     })
 })
 
