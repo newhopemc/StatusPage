@@ -37,7 +37,7 @@ fetch("https://api.uptimerobot.com/v2/getMonitors", {
             <li class="hoverable">
                 <div class="collapsible-header">
                     <div class="row valign-wrapper" style="margin-bottom: 0 !important; width:100%">
-                        <div class="col s6 m9 valign-wrapper truncate">
+                        <div class="col s6 m9 valign-wrapper">
                                 <i class="material-icons">${icons[monitor['friendly_name']]}</i>${monitor['friendly_name']}
                         </div>
                         <div class="col s6 m3 right-align valign-wrapper truncate">
