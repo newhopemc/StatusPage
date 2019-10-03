@@ -52,10 +52,7 @@ const servers_container = `
 </div>
 
 <div class="col s12">
-    <div class="card grey lighten-4">
-        <div style="margin-bottom: 0 !important; width: 100%;" id="servers-status">
-        </div>
-    </div>
+    <div class="row card grey lighten-4" style="margin-bottom: 0 !important" id="servers-status"></div>
 </div>`
 
 M.AutoInit()
