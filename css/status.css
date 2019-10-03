@@ -23,3 +23,47 @@
     font-family: Gilroy;
     src: url("../fonts/Radomir Tinkov - Gilroy-ExtraBold.otf") format("opentype");
 }
+
+@-moz-keyframes animateline {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -50rem;
+    }
+  }
+  @-webkit-keyframes animateline {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -50rem;
+    }
+  }
+  @-o-keyframes animateline {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -50rem;
+    }
+  }
+  @keyframes animateline {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -50rem;
+    }
+  }
+  svg {
+      
+      width: 6px;
+  }
+  .container svg line {
+      stroke: #0D47A1;
+      stroke-width: 3px;
+      stroke-linecap: round;
+      stroke-dasharray: 2px 20px;
+      animation: animateline 50s linear both infinite;
+    }

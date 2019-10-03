@@ -11,6 +11,53 @@ const icons = {
     "Weboldal": "laptop"
 }
 
+const servers_container = `
+
+<div class="row center-align">
+<div class="col hide-on-small-only m4"></div>
+<div id="bungeecord-status">
+    <div class="col s12 m4">
+        <div class="card hoverable" style="margin-bottom: 0 !important">
+            <div class="card-content" id="bungeecord-status">
+                <div class="card-title">
+                    BungeeCord
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col s12">
+
+    <svg viewbox="0 0 10 100">
+        <line x1="5" x2="5" y1="0" y2="100" />
+    </svg>
+</div>
+<div class="col hide-on-small-only m4"></div>
+<div id="lobby-status">
+    <div class="col s12 m4">
+        <div class="card hoverable" style="margin-top: 0 !important; margin-bottom: 0 !important;">
+            <div class="card-content">
+                <div class="card-title">
+                    Lobby
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col s12">
+
+    <svg viewbox="0 0 10 100">
+        <line x1="5" x2="5" y1="0" y2="100" />
+    </svg>
+</div>
+
+<div class="col s12">
+    <div class="card grey lighten-4">
+        <div style="margin-bottom: 0 !important; width: 100%;" id="servers-status">
+        </div>
+    </div>
+</div>`
+
 M.AutoInit()
 
 var monitors = []
@@ -45,11 +92,13 @@ fetch("https://api.uptimerobot.com/v2/getMonitors", {
                         </div>
                     </div>
                 </div><div class="collapsible-body">
-                    ${monitor['friendly_name'] == "Minecraft szerver" ? `<ul class="collection" id="srvs"></ul>` : ""}
+                    ${monitor['friendly_name'] == "Minecraft szerver" ? servers_container : ""}
                 </div>
                 
             </li>`)
         })
+
+        document
 
         const api = "https://newhope.hu/status.php?server="
         getServerStatus(api, "bungeecord")
@@ -61,39 +110,60 @@ fetch("https://api.uptimerobot.com/v2/getMonitors", {
 })
 
 function getServerStatus(api, server) {
-    fetch(api+server, {}).then(function(resp){
-        resp.json().then(function(result){
-            document.getElementById('srvs').innerHTML += `
-            <li class="collection-item hoverable">
-                <div class="row valign-wrapper" style="margin-bottom: 0">
-                    <div class="col s9">
-                        ${server.charAt(0).toUpperCase() + server.slice(1)}
-                    </div>
-                    <div class="col s3">
-                        ${result['online'] ? getStatus(2, " ("+result['players']['online']+"/"+result['players']['max']+")") : getStatus(9)}
+    var whereToPut = "servers-status"
+    if(server == "bungeecord"){
+        whereToPut = "bungeecord-status"
+    } else if(server == "lobby"){
+        whereToPut = "lobby-status"
+    }
+    fetch(api + server, {}).then(function (resp) {
+        resp.json().then(function (result) {
+            console.log(whereToPut)
+            var content = `
+            <div class="col s12 m4">
+                <div class="card hoverable">
+                    <div class="card-content center-align">
+                        <div class="card-title truncate">
+                            ${server.charAt(0).toUpperCase() + server.slice(1)}
+                        </div>
+                        <div class="row center-align" style="margin-bottom: 0 !important;
+                        position: relative;">
+                            <div stlye="
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);">
+                            ${result['online'] ? (server != "bungeecord" ? getStatus(2, " ("+result['players']['online']+"/"+result['players']['max']+")") : getStatus(2)) : getStatus(9)}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </li>
+            </div>
             `
+            if(server == "bungeecord" || server == "lobby"){
+                document.getElementById(whereToPut).innerHTML =  content
+            } else {
+                document.getElementById(whereToPut).innerHTML += content
+            }
         })
     })
 }
 
 function getStatus(status, toBeAppended) {
-    if(toBeAppended == undefined){
+    if (toBeAppended == undefined) {
         toBeAppended = ""
     }
     if (status == 0) {
-        return `<span class="grey-text text-darken-2 valign-wrapper"><i class="material-icons">pause</i> Megállítva</span>`
+        return `<span class="center-align grey-text text-darken-2">Megállítva</span>`
     } else if (status == 1) {
-        return `<span class="orange-text text-darken-1 valign-wrapper"><i class="material-icons">pause</i> Még nem volt felmérve</span>`
+        return `<span class="center-align orange-text text-darken-1">Még nem volt felmérve</span>`
     } else if (status == 2) {
-        return `<span class="green-text valign-wrapper"><i class="material-icons">done</i> Online${toBeAppended}</span>`
+        return `<span class="center-align green-text">Online${toBeAppended}</span>`
     } else if (status == 8) {
-        return `<span class="red-text valign-wrapper"><i class="material-icons">hourglass_empty</i> Leállítás...</span>`
+        return `<span class="center-align red-text">Leállítás...</span>`
     }
 
-    return `<span class="red-text text-darken-2 valign-wrapper"><i class="material-icons">close</i> Offline</span>`
+    return `<span class="center-align red-text text-darken-2">Offline</span>`
 
 }
 
